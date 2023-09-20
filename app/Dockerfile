@@ -14,4 +14,6 @@ WORKDIR /app
 
 COPY --from=install /app/ .
 
+EXPOSE 3000
+
 ENTRYPOINT [ "node", "src/server.js" ]
