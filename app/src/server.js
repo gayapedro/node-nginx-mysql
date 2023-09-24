@@ -9,17 +9,15 @@ const config = {
   database: "nodedb",
 };
 
-const connection = mysql.createConnection(config);
-connection.connect();
-const sql = `INSERT INTO names (name) VALUES ('${faker.name.firstName()}')`;
-connection.query(sql);
-connection.end();
-
 app.get("/", async (req, res) => {
   let returnString = "<h1>Full Cycle Rocks!</h1>";
 
   const connection = mysql.createConnection(config);
   connection.connect();
+
+  const sql = `INSERT INTO names (name) VALUES ('${faker.name.firstName()}')`;
+  connection.query(sql);
+
   connection.query("SELECT * FROM names", function (error, results, fields) {
     if (error) return res.send(returnString);
     if (results.length) {
