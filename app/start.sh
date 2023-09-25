@@ -1,1 +1,1 @@
-node src/server.js
+npm ci && npx nodemon src/server.js

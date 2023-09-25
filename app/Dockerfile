@@ -2,9 +2,7 @@ FROM node:16
 
 WORKDIR /app
 
-COPY . /app/
-
-RUN npm ci --omit=dev
+COPY ./start.sh /app
 
 EXPOSE 3000
 
@@ -14,4 +12,4 @@ RUN apt update && \
     chmod +x /usr/bin/wait-for && \
     chmod +x start.sh
  
-ENTRYPOINT [ "node", "src/server.js" ]
+ENTRYPOINT [ "nodemon", "src/server.js" ]
